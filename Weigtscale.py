@@ -29,9 +29,7 @@ class Wgtscale:
             Weight = {'TERMINALID': self.ID ,'WEIGHT': digial}
             r = requests.get(self.web,params=Weight)
             print r.text
-            GPIO.output(22,GPIO.HIGH)
-            time.sleep(.1)
-            GPIO.output(22,GPIO.LOW)
+            
 
     def run(self):
         while True:
@@ -45,5 +43,8 @@ class Wgtscale:
                 if not self.T.is_alive():
                     self.T=threading.Timer(60.0, self.PostToWeb)
                     self.T.start()
+                    GPIO.output(22,GPIO.HIGH)
+                    time.sleep(.1)
+                    GPIO.output(22,GPIO.LOW)
 
 
